@@ -1,5 +1,7 @@
 # Use Node.js 16 as base image (compatible with Angular 14)
 FROM node:16-alpine
+# Install curl for health checks
+RUN apk add --no-cache curl
 
 # Set the working directory inside the container
 WORKDIR /app
