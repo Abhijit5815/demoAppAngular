@@ -1,4 +1,5 @@
 {
+  "$schema": "https://json.schemastore.org/package",
   "name": "ngx-admin",
   "version": "10.0.0",
   "license": "MIT",
@@ -8,7 +9,8 @@
   },
   "scripts": {
     "ng": "ng",
-     "start": "ng serve --host 0.0.0.0 --port 4200"
+     "start": "ng serve --host 0.0.0.0 --port 4200",
+     "start-local": "ng serve --host localhost --port 4200"
   },
    "overrides": {
     "stylus": "github:stylus/stylus#0.54.5"
