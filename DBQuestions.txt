@@ -1,0 +1,14 @@
+High-level explanation
+Maintain a CSV file as the primary key–value store for test data, e.g., key,value.
+
+At test start, load the CSV into an in-memory map (Dictionary).
+
+Provide a helper FillDictionaryIfNotAvailable(key, fetcher):
+
+If key exists in the map, return it.
+
+If not, open an Oracle connection, run a parameterized query to fetch the value, add it to the map, and persist back to CSV.
+
+Scope the DB connection with a worker-scoped Playwright fixture so each parallel worker reuses a single connection and closes it on teardown.
+
+This gives fast reads from CSV, minimal DB calls, and resilience: missing keys are auto-populated once and reused thereafter.
